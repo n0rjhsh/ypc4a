@@ -1,0 +1,42 @@
+#include <Servo.h>
+Servo _; //Create a servo object
+int _ = _; //servo pin connect to Arduino
+int _ = _; //trig pin connect to Arduino
+int _ = _; //echo pin connect to Arduino
+long _; //duration of reflected sound signal
+int _; //distance
+
+void setup()
+{
+  _.attach(_);
+  pinMode(_, OUTPUT); //ultrasonic trig pin
+  pinMode(_, INPUT); //ultrasonic echo pin
+}
+
+void _()
+{
+  digitalWrite(_, LOW); //ultrasonic trig pin
+  delayMicroseconds(2);
+
+  //ultrasonic trig pin
+  digitalWrite(_, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(_, LOW);
+
+  //ultrasonic echo pin
+  _ = pulseIn(_, HIGH); //measure duration
+  _ = _ * 0.034 / 2; //calculate distance
+}
+
+void loop()
+{
+  _(); //call ultrasonic function
+  if (distance <= 10)
+  {
+    _.write(90);
+  }
+  else
+  {
+    _.write(0);
+  }
+}
