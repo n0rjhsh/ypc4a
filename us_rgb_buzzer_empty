@@ -1,65 +1,67 @@
 int _ = _; //trig pin ultrasonic
 int _ = _; //echo pin ultrasonic
-int buzzPin = 9;
-int redPin = 13;
-int greenPin = 2;
-int bluePin = 4;
+int _ = _; //buzzer pin
+int _ = _; //red pin RGB
+int _ = _; //green pin RGB
+int _ = _; //blue pin RGB
 long duration;
 int distance;
 
 void setup()
 {
-  Serial.begin(9600);
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzPin, OUTPUT);
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
+  Serial._(9600);
+  _(_, INPUT); //echo pin
+  pinMode(_, OUTPUT); //trig pin
+  pinMode(_, OUTPUT);
+  pinMode(_, OUTPUT);
+  pinMode(_, OUTPUT);
+  pinMode(_, OUTPUT);
 }
 
-void ultra()
+void _()
 {
-  digitalWrite(trigPin, LOW); //ultrasonic trig pin
+  digitalWrite(_, LOW); //ultrasonic trig pin
   delayMicroseconds(2);
 
   //ultrasonic trig pin
-  digitalWrite(trigPin, HIGH);
+  digitalWrite(_, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  digitalWrite(_, LOW);
 
   //ultrasonic echo pin
-  duration = pulseIn(echoPin, HIGH);
-  distance = duration * 0.034 / 2;
+  _ = pulseIn(_, HIGH); //measure duration
+  _ = _ * 0.034 / 2; //calculate distance
 }
 
 void loop()
 {
-  ultra();
-  Serial.print("Distance (cm): ");
-  Serial.println(distance);
+  _();
+  Serial._("_");
+  Serial._(_);
 
-  if (distance > 30 || distance < 0)
+  if (distance > 30 || distance < 0) //distance more than 30cm OR less than 0cm
   {
-    digitalWrite(bluePin, LOW);
-    digitalWrite(redPin, LOW);
-    digitalWrite(greenPin, HIGH);
-    delay(500);
+    _(_, _); //red pin off
+    digitalWrite(_, HIGH); //green pin on
+    digitalWrite(_, LOW); //blue pin off
+    delay(_);
   }
-  if (distance >= 20 && distance <= 30)
+  
+  if (distance >= 20 && distance <= 30) //distance more than & equal to 20cm AND less than & equal to 30cm
   {
-    digitalWrite(redPin, LOW);
-    digitalWrite(greenPin, LOW);
-    digitalWrite(bluePin, HIGH);
-    delay(500);
+    _(_, _); //red pin off
+    digitalWrite(_, _); //green pin off
+    digitalWrite(_, HIGH); //blue pin on
+    delay(_);
   }
-  if (distance < 20 && distance > 0)
+  
+  if (distance < 20 && distance > 0) //distance less than 20cm AND more than 0cm
   {
-    digitalWrite(greenPin, LOW);
-    digitalWrite(bluePin, LOW);
-    digitalWrite(redPin, HIGH);
-    tone(buzzPin, 2000, 500);
-    delay(1000);
-    noTone(buzzPin);
+    _(_, _); //red pin on
+    digitalWrite(_, _); //green pin off
+    digitalWrite(_, HIGH); //blue pin off
+    tone(_, 2000, 500);
+    delay(_);
+    noTone(_);
   }
 }
