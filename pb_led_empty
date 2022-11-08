@@ -1,0 +1,21 @@
+int _ = _; //push button pin
+int _ = _; //led pin
+
+void setup()
+{
+  _(_, INPUT);
+  _(_, OUTPUT);
+}
+
+void loop()
+{
+  int _ = _(_);
+  if (_ == 1)
+  {
+    _(_, HIGH); //turn on led
+  }
+  else
+  {
+    digitalWrite(_, LOW); //turn off led
+  }
+}
