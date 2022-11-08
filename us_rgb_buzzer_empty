@@ -60,7 +60,7 @@ void loop()
     _(_, _); //red pin on
     digitalWrite(_, _); //green pin off
     digitalWrite(_, HIGH); //blue pin off
-    tone(_, 2000, 500);
+    tone(_, 2000, 500); //tone(pin, frequency, duration)
     delay(_);
     noTone(_);
   }
