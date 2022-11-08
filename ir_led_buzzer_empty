@@ -1,0 +1,27 @@
+int _ = _; // connect ir sensor to arduino
+int _ = _; // conect Led to arduino
+int _ = _; // connect Buzzer to arduino
+
+void setup()
+{
+  _ (_, _); // sensor pin INPUT
+  pinMode (_, _); // led pin OUTPUT
+  pinMode (_, OUTPUT); // buzzer pin OUTPUT
+}
+
+void loop()
+{
+  int _ = _(_);
+
+  if (_ == 1)
+  {
+    _(_, _); // LED LOW
+    digitalWrite(_, _); // Buzzer LOW
+  }
+
+  else
+  {
+    digitalWrite(_, _); // LED High
+    digitalWrite(_, _); // Buzzer HIGH
+  }
+}
