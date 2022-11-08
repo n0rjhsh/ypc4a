@@ -1,0 +1,21 @@
+int pb = 7;
+int led = 6;
+
+void setup()
+{
+  pinMode(pb, INPUT);
+  pinMode(led, OUTPUT);
+}
+
+void loop()
+{
+  int pbdata = digitalRead(pb);
+  if (pbdata == 1)
+  {
+    digitalWrite(led, HIGH);
+  }
+  else
+  {
+    digitalWrite(led, LOW);
+  }
+}
