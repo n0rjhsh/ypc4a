@@ -1,9 +1,9 @@
-int trigPin = 3;
-int echoPin = 7;
+int trigPin = 5;
+int echoPin = 6;
 int buzzPin = 9;
-int redPin = 13;
-int greenPin = 2;
-int bluePin = 4;
+int redPin = 3;
+int greenPin = 4;
+int bluePin = 7;
 long duration;
 int distance;
 
@@ -39,7 +39,7 @@ void loop()
   Serial.print("Distance (cm): ");
   Serial.println(distance);
 
-  if (distance > 30 || distance < 0)
+  if (distance > 30)
   {
     digitalWrite(bluePin, LOW);
     digitalWrite(redPin, LOW);
