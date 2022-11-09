@@ -39,7 +39,7 @@ void loop()
   Serial._("_");
   Serial._(_);
 
-  if (distance > 30 || distance < 0) //distance more than 30cm OR less than 0cm
+  if (distance > 30) //distance more than 30cm
   {
     _(_, _); //red pin off
     digitalWrite(_, HIGH); //green pin on
