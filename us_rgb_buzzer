@@ -10,8 +10,8 @@ int distance;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(trigPin, OUTPUT);
   pinMode(buzzPin, OUTPUT);
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
