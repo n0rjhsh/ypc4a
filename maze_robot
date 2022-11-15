@@ -1,0 +1,90 @@
+int dirR = 4;
+int speedR = 5;
+int dirL = 7;
+int speedL = 6;
+
+int trigPin = 11;
+int echoPin = 12;
+long duration;
+int distance;
+
+void setup()
+{
+  pinMode(dirR, OUTPUT);
+  pinMode(speedR, OUTPUT);
+  pinMode(dirL, OUTPUT);
+  pinMode(speedL, OUTPUT);
+  pinMode(trigPin, OUTPUT); //ultrasonic trig pin
+  pinMode(echoPin, INPUT); //ultrasonic echo pin
+  Serial.begin(9600);
+}
+
+void forward(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void backward(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void right(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void left(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void stop() 
+{
+  analogWrite(speedR, 0);
+  analogWrite(speedL, 0);
+}
+
+void loop()
+{
+  digitalWrite(trigPin, LOW); //ultrasonic trig pin
+  delayMicroseconds(2);
+
+  //ultrasonic trig pin
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  //ultrasonic echo pin
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2;
+
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  if ( distance < 10 )
+  {//distance less than 10cm
+    stop();
+    delay(500);
+    backward(100, 100); //backward
+    delay(500);
+    left(100, 100); //turn
+    delay(300);
+  }
+  else
+  {
+    forward(100, 100); //forward
+  }
+}
