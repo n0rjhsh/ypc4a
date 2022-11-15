@@ -1,0 +1,143 @@
+int speedR = 10;  // 5
+int dirR = 12;    // 4
+int speedL = 11;  // 6
+int dirL = 13;    // 7
+int button = A0;
+
+int sensor1 = 15; // A1
+int sensor2 = 16; // A2
+int sensor3 = 17; // A3
+int sensor4 = 18; // A4
+int sensor5 = 19; // A5
+
+void setup()
+{
+  pinMode(speedR, OUTPUT);
+  pinMode(dirR, OUTPUT);
+  pinMode(speedL, OUTPUT);
+  pinMode(dirL, OUTPUT);
+
+  pinMode(sensor1, INPUT);
+  pinMode(sensor2, INPUT);
+  pinMode(sensor3, INPUT);
+  pinMode(sensor4, INPUT);
+  pinMode(sensor5, INPUT);
+
+  while (digitalRead(button) == 0)
+  {
+    stop();
+  }
+}
+
+void forward(int a, int b)
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void backward(int a, int b)
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void right(int a, int b)
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void left(int a, int b)
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void stop()
+{
+  analogWrite(speedR, 0);
+  analogWrite(speedL, 0);
+}
+
+void loop()
+{
+  int s1 = digitalRead(sensor1);
+  int s2 = digitalRead(sensor2);
+  int s3 = digitalRead(sensor3);
+  int s4 = digitalRead(sensor4);
+  int s5 = digitalRead(sensor5);
+
+  if (s1 == LOW && s2 == LOW && s3 == HIGH && s4 == LOW && s5 == LOW)
+  { //12*45
+    forward(100, 100);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == HIGH && s4 == HIGH && s5 == LOW)
+  { //12**5
+    forward(85, 100);
+  }
+  if (s1 == LOW && s2 == HIGH && s3 == HIGH && s4 == LOW && s5 == LOW)
+  { //1**45
+    forward(100, 85);
+  }
+  if (s1 == LOW && s2 == HIGH && s3 == HIGH && s4 == HIGH && s5 == LOW)
+  { //1***5
+    forward(100, 100);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == LOW && s4 == HIGH && s5 == LOW)
+  { //123*5
+    forward(70, 100);
+  }
+  if (s1 == LOW && s2 == HIGH && s3 == LOW && s4 == LOW && s5 == LOW)
+  { //1*345
+    forward(100, 70);
+  }
+  if (s1 == HIGH && s2 == HIGH && s3 == LOW && s4 == LOW && s5 == LOW)
+  { //**345
+    left(100, 50);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == LOW && s4 == HIGH && s5 == HIGH)
+  { //123**
+    right(50, 100);
+  }
+  if (s1 == HIGH && s2 == LOW && s3 == LOW && s4 == LOW && s5 == LOW)
+  { //*2345
+    left(100, 30);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == LOW && s4 == LOW && s5 == HIGH)
+  { //1234*
+    right(30, 100);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == LOW && s4 == LOW && s5 == LOW)
+  { //12345
+    right(80, 80);
+  }
+
+  if (s1 == HIGH && s2 == HIGH && s3 == HIGH && s4 == LOW && s5 == LOW)
+  { //***45
+    left(100, 120);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == HIGH && s4 == HIGH && s5 == HIGH)
+  { //12***
+    right(120, 100);
+  }
+  if (s1 == LOW && s2 == LOW && s3 == HIGH && s4 == HIGH && s5 == HIGH)
+  { //123**
+    right(100, 90); // Baru update
+  }
+  if (s1 == LOW && s2 == HIGH && s3 == HIGH && s4 == HIGH && s5 == HIGH)
+  { //1****
+    forward(60, 120);
+  }
+  if (s1 == HIGH && s2 == HIGH && s3 == HIGH && s4 == HIGH && s5 == LOW)
+  { //****5
+    forward(100, 85);
+  }
+}
