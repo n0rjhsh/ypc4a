@@ -1,0 +1,72 @@
+int _ = _;
+int _ = _;
+int _ = _;
+int _ = _;
+int _ = _;
+
+void setup() 
+{
+  _(_, _);
+  _(_, _);
+  pinMode(_, OUTPUT);
+  pinMode(_, OUTPUT);
+  pinMode(_, INPUT);
+
+  while (_(_) == 0)
+  {
+    stop();
+  }
+}
+
+void _(int a, int b) //a=right motor, b=left motor
+{
+  _(_, _);
+  _(_, a);
+  digitalWrite(_, _);
+  analogWrite(_, b);
+}
+
+void _(int a, int b) //a=right motor, b=left motor
+{
+  _(_, _);
+  _(_, a);
+  digitalWrite(_, _);
+  analogWrite(_, b);
+}
+
+void _(int a, int b) //a=right motor, b=left motor
+{
+  _(_, _);
+  _(_, a);
+  digitalWrite(_, _);
+  analogWrite(_, b);
+}
+
+void _(int a, int b) //a=right motor, b=left motor
+{
+  _(_, _);
+  _(_, a);
+  digitalWrite(_, _);
+  analogWrite(_, b);
+}
+
+void stop() {
+  _(_, _);
+  analogWrite(_, 0);
+}
+
+void loop() 
+{
+  _(_, _); //forward
+  delay(_);
+  _(_, _); //turn right
+  delay(_);
+  stop();
+  delay(_);
+  _(_, _); //backward
+  delay(_);
+  _(_, _); //turn left
+  delay(_);
+  stop();
+  delay(_);
+}
