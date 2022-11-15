@@ -1,0 +1,73 @@
+int dirR = 4;
+int speedR = 5;
+int dirL = 7;
+int speedL = 6;
+int pb = 9;
+
+void setup()
+{
+  pinMode(dirR, OUTPUT);
+  pinMode(speedR, OUTPUT);
+  pinMode(dirL, OUTPUT);
+  pinMode(speedL, OUTPUT);
+  pinMode(pb, INPUT);
+
+    while (digitalRead(pb) == 0)
+  {
+    stop();
+  }
+}
+
+void forward(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void backward(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void right(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, LOW);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, HIGH);
+  analogWrite(speedL, b);
+}
+
+void left(int a, int b) //a=right motor, b=left motor
+{
+  digitalWrite(dirR, HIGH);
+  analogWrite(speedR, a);
+  digitalWrite(dirL, LOW);
+  analogWrite(speedL, b);
+}
+
+void stop() 
+{
+  analogWrite(speedR, 0);
+  analogWrite(speedL, 0);
+}
+
+void loop()
+{
+  forward(100, 100); //forward
+  delay(1000);
+  right(100, 100); //turn right
+  delay(1000);
+  stop();
+  delay(1000);
+  backward(100, 100); //backward
+  delay(1000);
+  left(100, 100); //turn left
+  delay(1000);
+  stop();
+  delay(1000);
+}
