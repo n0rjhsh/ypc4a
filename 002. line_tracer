@@ -1,8 +1,8 @@
-int speedR = 10;  // 5
-int dirR = 12;    // 4
-int speedL = 11;  // 6
-int dirL = 13;    // 7
-int button = A0;
+int dirR = 4;
+int speedR = 5;
+int dirL = 7;
+int speedL = 6;
+int pb = 9;
 
 int sensor1 = 15; // A1
 int sensor2 = 16; // A2
@@ -23,7 +23,7 @@ void setup()
   pinMode(sensor4, INPUT);
   pinMode(sensor5, INPUT);
 
-  while (digitalRead(button) == 0)
+  while (digitalRead(pb) == 0)
   {
     stop();
   }
